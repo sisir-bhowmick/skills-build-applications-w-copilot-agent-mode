@@ -21,6 +21,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/activities">
+            <img src="/octofitapp-small.svg" alt="OctoFit Logo" />
             OctoFit Tracker
           </NavLink>
           <button
