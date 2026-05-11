@@ -33,7 +33,8 @@ router.register(r'workouts', WorkoutViewSet)
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    codespace_name = os.environ.get('CODESPACE_NAME')
+    raw_codespace_name = os.environ.get('CODESPACE_NAME', '')
+    codespace_name = raw_codespace_name.strip().replace(' ', '-') if raw_codespace_name else None
     if codespace_name:
         base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
         return Response({

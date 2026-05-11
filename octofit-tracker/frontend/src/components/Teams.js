@@ -1,15 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { getApiUrl } from '../api';
 
 const endpointName = 'teams';
-
-const getApiUrl = () => {
-  const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
-  const baseUrl = codespaceName
-    ? `https://${codespaceName}-8000.app.github.dev/api/${endpointName}/`
-    : `http://localhost:8000/api/${endpointName}/`;
-  console.log('[Teams] REST API endpoint:', baseUrl);
-  return baseUrl;
-};
 
 function Teams() {
   const [items, setItems] = useState([]);
@@ -20,7 +12,7 @@ function Teams() {
   const [showModal, setShowModal] = useState(false);
 
   const fetchData = () => {
-    const url = getApiUrl();
+    const url = getApiUrl(endpointName);
     console.log('[Teams] Fetching data from', url);
     setLoading(true);
     setError(null);
